@@ -1,0 +1,177 @@
+<aw-wizard #wizard>
+  <div class="card card-block register-card">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <h3 class="form-label">Bienvenido a Trouce</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6 switch-wrap pull-right">
+        {{(userTypeSwitch) ? 'Prestador de Servicios' : 'Cliente'}}
+          <label class="switch pull-right">
+            <input type="checkbox" (click)="checkAWStep()" [(ngModel)]="userTypeSwitch" >
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    &nbsp;
+    <a [routerLink]="['/']" class="btn btn-link">Ir a Trouce. →</a>
+    <span class="form-label">Regístrate para encontrar los servicios que tanto buscabas</span>
+        <aw-wizard-step [stepTitle]="'Datos Personales'">
+          <form [formGroup]="registerForm" class="form-group" #myform="ngForm">
+  
+            <div class="row" formGroupName="personalInfo">
+              <div class="col-md-6">
+                <div class="input-group" [ngClass]="{'has-error':registerForm.controls.personalInfo.controls.name.invalid && myform.submitted}">
+                  <label>Nombre</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.personalInfo.controls.name.errors?.required">
+                  Por favor llene este campo</small>
+                  <input formControlName="name" class="form-control with-primary-addon" type="text">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group" [ngClass]="{'has-error':registerForm.controls.personalInfo.controls.lastname.invalid && myform.submitted}">
+                  <label>Apellido</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.personalInfo.controls.lastname.errors?.required">
+                  Por favor llene este campo</small>
+                  <input formControlName="lastname" class="form-control with-primary-addon" type="text">
+                </div>
+              </div>
+              <div class="col-md-6" *ngIf="!userTypeSwitch">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.address.invalid && myform.submitted}">
+                  <label for="Direccion">Dirección</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.personalInfo.controls.address.errors?.required">
+                  Por favor llene este campo</small>
+                  <input formControlName="address" class="form-control with-primary-addon" type="text">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.phone.invalid && myform.submitted}">
+                  <label>Teléfono</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.personalInfo.controls.phone.errors?.required">
+                  Por favor llene este campo</small>
+                  <input formControlName="phone" class="form-control with-primary-addon" type="number">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.email.invalid && myform.submitted}">
+                  <label>Correo</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.personalInfo.controls.email.errors?.required">
+                  Por favor llene este campo</small>
+                  <input formControlName="email" class="form-control with-primary-addon" type="text">
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.password.invalid && myform.submitted}">
+                    <label>Contraseña</label>
+                    &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.personalInfo.controls.password.errors?.required">
+                  Por favor llene este campo</small>
+                    <input formControlName="password" class="form-control with-primary-addon" type="password">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.invalid && myform.submitted}">
+                    <label>Repita la Contraseña</label>
+                    &nbsp;
+                    <span style="color:red" *ngIf="registerForm.controls.personalInfo.errors?.doesMatchPassword">Las constraseñas no coinciden</span>
+                    <input formControlName="confirmPassword" class="form-control with-primary-addon" type="password">
+                  </div>
+                </div>
+            </div>
+          </form>
+          <button *ngIf="userTypeSwitch" class="btn btn-primary" type="button" awNextStep>Siguiente</button>
+          <button *ngIf="!userTypeSwitch"class="btn btn-lg btn-primary" (click)="onSubmit()" type="submit" (keydown.enter)="handleKeyEnter($event)">Registrarse</button>
+        
+        </aw-wizard-step>
+  
+        <aw-wizard-step [stepTitle] = "'Datos de su negocio'">
+          <form [formGroup]="registerForm" class="form-group" *ngIf="userTypeSwitch" #myform="ngForm">
+            <div class="form-group"  formGroupName="businessInfo">
+              <div class="row">
+              <div class="col-md-6" >
+                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.businessname.invalid && myform.submitted}">
+                  <label>Nombre del negocio</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.businessInfo.controls.businessname.errors?.required">
+                  Por favor llene este campo</small>
+                  <input formControlName="businessname" class="form-control with-primary-addon" type="text">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.businessdescription.invalid && myform.submitted}">
+                  <label>Descripción del negocio</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.businessInfo.controls.businessdescription.errors?.required">
+                  Por favor llene este campo</small>
+                  <textarea formControlName="businessdescription" class="form-control with-primary-addon">
+                      Describe brevemente lo que hace tu negocio
+                      </textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.address.invalid && myform.submitted}">
+                  <label for="Direccion">Dirección del negocio</label>
+                  &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.businessInfo.controls.address.errors?.required">
+                  Por favor llene este campo</small>
+                  <input formControlName="address" class="form-control with-primary-addon" type="text">
+                </div>
+              </div>              
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="col-md-6">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.servicecategories.invalid && myform.submitted}">
+                    <label>Categorias del servicio</label>
+                    &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.businessInfo.controls.servicecategories.errors?.required">
+                  Por favor llene este campo</small>
+                    <dx-tag-box placeholder="Seleccionar..." formControlName="servicecategories" [dataSource]="themeCategories" ></dx-tag-box>
+                  </div>
+                </div>
+                <!-- <div class="col-md-6">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.offeredservices.invalid && myform.submitted}">
+                    <label>Servicios a ofrecer</label>
+                    &nbsp;
+                  <small class="text-danger" 
+                  *ngIf="submitted && registerForm.controls.businessInfo.controls.offeredservices.errors?.required">
+                  Por favor llene este campo</small>
+                    <dx-tag-box formControlName="offeredservices" [acceptCustomValue]=true></dx-tag-box>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            </div>
+        <div class="row">
+          <div class="col-md-6">
+            <button class="btn btn-danger" awPreviousStep>Atrás</button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-lg btn-primary" type="submit" (click)="onSubmit()" (keydown.enter)="handleKeyEnter($event)">Registrarse</button>
+          </div>
+        </div>
+        </form> 
+      </aw-wizard-step>
+      <a [routerLink]="['/login']" class="btn btn-link">Ya tienes una cuenta, inicia sesión→</a>
+    </div>
+  </aw-wizard>

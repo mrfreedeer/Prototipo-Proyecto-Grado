@@ -1,0 +1,22 @@
+<div class="card animated fadeIn" style="outline: 0.5px solid gray">
+  <div class="card-header" *ngIf="cardTitle">
+    <h4 class="card-title">{{cardTitle}}, <b>{{cardTitle&&isCollapse&&!removeCollapseBtn ? random+'Km' : ''}}</b></h4>
+    <h4 class="card-subtitle pull-right" *ngIf="cardTitle&&isCollapse&&!removeCollapseBtn">
+      {{cardSubtitle}} <b *ngFor="let c of numbers"><i class="fa fa-star" [ngStyle]="{color: c == 1 ? '#FFD700' : 'silver'}"></i></b>
+    </h4>
+    <h4 class="card-subtitle pull-right" *ngIf="removeCollapseBtn">
+      {{cardSubtitle}}
+    </h4>
+    <div class="btn-group" *ngIf="cardTitle&&isCollapse&&!removeCollapseBtn">
+      <button class="collapse-btn" (click)="collapseCard()">
+        <i class="fa fa-minus fa-fw" [ngClass]="{'collapse-on':collapse === 'on','collapse-off':collapse === 'off'}"></i>
+        <i class="fa fa-plus fa-fw" [ngClass]="{'collapse-on':collapse === 'off','collapse-off':collapse === 'on'}"></i>
+      </button>
+    </div>
+  </div>
+  <div class="content-wrap" [@collapse]="collapse">
+    <div class="card-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

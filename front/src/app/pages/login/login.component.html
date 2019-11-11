@@ -1,0 +1,21 @@
+<div class="card card-block login-card">
+  <h3 class="form-label">Bienvenido devuelta a Trouce</h3>
+  <span class="form-label">encuentra oportunidades haciendo lo que más sabes</span>
+  <a [routerLink]="['/']" class="btn btn-link">Ir a Trouce. →</a>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-group" #myform="ngForm">
+    <div class="input-group" [ngClass]="{'has-error': loginForm.controls.email.invalid && myform.submitted}">
+      <span class="input-group-addon addon-left" id="username">
+        <i class="fa fa-user fa-fw"></i>
+      </span>
+      <input formControlName="email" class="form-control with-primary-addon" placeholder="E-mail" type="text">
+    </div>
+    <div class="input-group" [ngClass]="{'has-error': loginForm.controls.password.invalid && myform.submitted}">
+      <span class="input-group-addon addon-left" id="password">
+        <i class="fa fa-lock fa-fw"></i>
+      </span>
+      <input formControlName="password" class="form-control with-primary-addon" placeholder="Contraseña" type="password">
+    </div>
+    <button class="btn btn-lg btn-primary" type="submit" (keydown.enter)="handleKeyEnter($event)">Entrar</button>
+    <a [routerLink]="['/register']" class="btn btn-link">Regístrese ahora. →</a>
+  </form>
+</div>

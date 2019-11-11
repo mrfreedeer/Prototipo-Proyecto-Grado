@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+  <div class="col-md-1">
+    <button class="btn btn-lg btn-primary" type="submit" (click)="addService()">Añadir servicio</button>
+  </div>
+  <div class="col-md-1">
+    <button class="btn btn-lg btn-success" type="submit" (click)="saveServices()">Guardar servicios</button>
+  </div>
+</div>
+<div class="card card-block register-card"*ngFor="let serviceForm of servicesList" style="max-width: 25%; border:5px; border-color: grey;">
+  <div class="card-content">
+    <card [collapse]= "off" >
+      <div class="col-md-12">
+          <form [formGroup]="serviceTemplate" class="form-group" #myform="ngForm" >
+            <div class="col-md-12">
+              <div class="input-group" style="width: 100%" [ngClass]="{'has-error':serviceForm.controls.name.invalid && myform.submitted}">
+                <label>Nombre</label>
+                  &nbsp;
+                <small class="text-danger"
+                  *ngIf="submitted && serviceForm.controls.name.errors?.required">Por favor llene este
+                  campo</small>
+                <input formControlName="name" class="form-control with-primary-addon" type="text">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="input-group" style="width: 100%" [ngClass]="{'has-error':serviceForm.controls.description.invalid && myform.submitted}">
+                <label>Descripción</label>
+                  &nbsp;
+                <small class="text-danger"
+                  *ngIf="submitted && serviceForm.controls.description.errors?.required">Por favor llene este
+                  campo</small>
+                <input formControlName="description" class="form-control with-primary-addon" type="text">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="input-group" style="width: 100%" [ngClass]="{'has-error':serviceForm.controls.price.invalid && myform.submitted}">
+                <label>Precio</label>
+                  &nbsp;
+                <small class="text-danger"
+                  *ngIf="submitted && serviceForm.controls.price.errors?.required">Por favor llene este
+                  campo</small>
+                <input formControlName="price" class="form-control with-primary-addon" type="number">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="input-group" style="width: 100%" [ngClass]="{'has-error':serviceForm.controls.notes.invalid && myform.submitted}">
+                <label>Notas</label>
+                <input formControlName="notes" class="form-control with-primary-addon" type="text">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group" [ngClass]="{'has-error': serviceForm.controls.categories.invalid && myform.submitted}">
+                <label>Categorías del servicio</label>
+                &nbsp;
+              <small class="text-danger" 
+              *ngIf="submitted && serviceForm.controls.categories.errors?.required">
+              Por favor llene este campo</small>
+                <dx-tag-box placeholder="Seleccionar..." formControlName="categories" [dataSource]="themeCategories" ></dx-tag-box>
+              </div>
+            </div>
+          </form>
+      </div>
+    </card>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-12" style="max-width: 20%">
+    <card [collapse]= "off"  *ngFor="let currentService of currentServices">
+      <button class="btn pull-right"  (click)="editService(currentService)">
+        Editar
+        <i class="fa fa-pencil-square-o fa-lg"></i>
+      </button>
+        <div class="col-md-12">
+          <label>Nombre: </label>
+          {{currentService.name}}
+        </div>
+        <div class="col-md-12">
+          <label>Descripción: </label>
+          {{currentService.description}}
+        </div>
+        <div class="col-md-12">
+          <label>Precio: </label>
+          {{currentService.price}}
+        </div>
+        <div class="col-md-12" *ngIf="currentService.notes!=''">
+          <label>Notas: </label>
+          {{currentService.notes}}
+        </div>
+    </card>
+  </div>
+</div>

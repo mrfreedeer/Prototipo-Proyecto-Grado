@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-6">
+            <h1 style="color: #f09f0a">Bienvenido a Trouce</h1>
+          </div>
+        </div>
+        <div class="row" style="min-height: 150px; text-align: center">
+            <img  [routerLink]="['/register']" src="assets/images/banner.jpg" style="max-width: 100%; cursor: pointer;" alt="">
+        </div>
+      </div>
+    <div class="row">
+      <div class="row" style="min-height: 50px">
+        <div class="col-md-12">
+            <div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="col-md-4"></div>
+      <div class="col-md-4" align="center">
+        <h2 style="color: #f09f0a">
+          Categorías populares
+        </h2>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ng-image-slider [infinite]="true" [images]="imageObject" [imageSize]="{height: 250, width: 250}"
+          [videoAutoPlay]="true"
+          [imagePopup]="true"
+          (imageClick)="imageClick($event)"
+          #nav></ng-image-slider>
+      </div>
+    </div>
+  </div>
+</div>

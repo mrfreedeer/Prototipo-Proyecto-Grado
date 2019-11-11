@@ -1,0 +1,25 @@
+<div class="content-wrap">
+  <a routerLink="/pages/index" *ngIf="routeTitle !== 'Dashboard'" (click)="returnHome()">Dashboard</a>
+  <i class="fa fa-question-circle fa-fw log pull-right help" (click)="openModal(tutorialModal)" style="padding-right: 8%; cursor: pointer">Ayuda</i>  
+  <i *ngIf="routeTitle !== 'Dashboard'">/</i>
+  <span>{{routeTitle}}</span>
+</div>
+
+<modal #tutorialModal modalClass="modal-lg">
+  <modal-header>
+    <h3 class="title"> Trouce el buscador de servicios </h3>
+  </modal-header>
+  <modal-content>
+      <h3>1. Utiliza la barra para encontrar proveedores de servicios cercanos</h3>&nbsp;
+      <img class="helpImg" src="{{searchSrc}}" alt="">
+      <h3>2. Utiliza la distancia, su calificación y descripción para escoger tu proveedor</h3>&nbsp;
+      <img class="helpImg" src="{{searchResultSrc}}" alt="">
+      <h3>3. Registrate como proveedor de servicios</h3>&nbsp;
+      <img class="helpImg" src="{{registerSrc1}}" alt="">
+      <h3>4. Ofrece tus propios servicios a los demás</h3>&nbsp;
+      <img class="helpImg" src="{{registerSrc2}}" alt="">
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="closeModal(tutorialModal)">close</button>
+  </modal-footer>
+</modal>

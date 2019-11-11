@@ -1,0 +1,154 @@
+<div class="card card-block register-card" style="border:5px; border-color: grey;">
+  <div class="card-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-12">
+              <img class="userAvatar"
+                src="https://www.bemanistyle.com/wp-content/uploads/2018/01/Linux-Avatar-300px.png">
+            </div>
+            <div class="col-md-12">
+              Cambiar foto de perfil
+              <input type="file">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-12">
+              <form [formGroup]="editForm" class="form-group" #myform="ngForm">
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error':editForm.controls.name.invalid && myform.submitted}">
+                    <label>Nombre</label>
+                    &nbsp;
+                    <small class="text-danger"
+                      *ngIf="submitted && editForm.controls.name.errors?.required">Por favor llene este
+                      campo</small>
+                    <input formControlName="name" class="form-control with-primary-addon" type="text">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error':editForm.controls.lastname.invalid && myform.submitted}">
+                    <label>Apellido</label>
+                    &nbsp;
+                    <small class="text-danger"
+                      *ngIf="submitted && editForm.controls.lastname.errors?.required">Por favor llene este
+                      campo</small>
+                    <input formControlName="lastname" class="form-control with-primary-addon" type="text">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.phone.invalid && myform.submitted}">
+                    <label>Teléfono</label>
+                    &nbsp;
+                    <small class="text-danger"
+                      *ngIf="submitted && editForm.controls.phone.errors?.required">Por favor llene este
+                      campo</small>
+                    <input formControlName="phone" class="form-control with-primary-addon" type="number">
+                  </div>
+                </div>
+                <div class="col-md-6" *ngIf="!userTypeSwitch">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.address.invalid && myform.submitted}">
+                    <label>Dirección</label>
+                    &nbsp;
+                    <small class="text-danger"
+                      *ngIf="submitted && editForm.controls.address.errors?.required">Por favor llene este
+                      campo</small>
+                    <input formControlName="address" class="form-control with-primary-addon" type="text">
+                  </div>
+                </div>
+                <div class="col-md-6" *ngIf="!userTypeSwitch">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.password.invalid && myform.submitted}">
+                    <label>Contraseña</label>
+                    <input formControlName="password" (keypress)="passwordChange()"
+                      class="form-control with-primary-addon" type="password">
+                  </div>
+                </div>
+                <div class="col-md-6" *ngIf="!userTypeSwitch">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.confirmPassword.invalid && myform.submitted}">
+                    <label>Repita la Contraseña</label>
+                    &nbsp;
+                    <span style="color:red" *ngIf="editForm.errors?.doesMatchPassword">Las constraseñas no
+                      coinciden</span>
+                    <input formControlName="confirmPassword" class="form-control with-primary-addon" type="password">
+                  </div>
+                </div>
+              </form>
+              <form [formGroup]="editForm" class="form-group" #myform="ngForm" *ngIf="userTypeSwitch">
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.businessname.invalid && myform.submitted}">
+                    <label>Nombre del negocio</label>
+                    &nbsp;
+                    <small class="text-danger"
+                      *ngIf="submitted && editForm.controls.businessname.errors?.required">Por favor llene
+                      este campo</small>
+                    <input formControlName="businessname" class="form-control with-primary-addon" type="text">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.businessdescription.invalid && myform.submitted}">
+                    <label>Descripción del negocio</label>
+                    &nbsp;
+                    <small class="text-danger"
+                      *ngIf="submitted && editForm.controls.businessdescription.errors?.required">Por favor
+                      llene este campo</small>
+                    <textarea formControlName="businessdescription" class="form-control with-primary-addon">
+                            Describe brevemente lo que hace tu negocio
+                            </textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.address.invalid && myform.submitted}">
+                    <label for="Direccion">Dirección del negocio</label>
+                    &nbsp;
+                    <small class="text-danger"
+                      *ngIf="submitted && editForm.controls.address.errors?.required">Por favor
+                      llene este campo</small>
+                    <input formControlName="address" class="form-control with-primary-addon" type="text">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.password.invalid && myform.submitted}">
+                    <label>Contraseña</label>
+                    <input formControlName="password" (keypress)="passwordChange()"
+                      class="form-control with-primary-addon" type="password">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group"
+                    [ngClass]="{'has-error': editForm.controls.confirmPassword.invalid && myform.submitted}">
+                    <label>Repita la Contraseña</label>
+                    &nbsp;
+                    <span style="color:red" *ngIf="editForm.errors?.doesMatchPassword">Las constraseñas no
+                      coinciden</span>
+                    <input formControlName="confirmPassword" class="form-control with-primary-addon" type="password">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-6" style="padding-top: 5%;">
+                <button class="btn btn-lg btn-primary" (click)="updateProfile()" type="submit"
+                  (keydown.enter)="handleKeyEnter($event)">Actualizar perfil</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

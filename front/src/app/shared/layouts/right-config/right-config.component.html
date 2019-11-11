@@ -1,0 +1,70 @@
+<button class="config-switch" (click)="configToggle()">
+  <i class="fa fa-gear" *ngIf="!isConfigToggle"></i>
+  <i class="fa fa-chevron-right" *ngIf="isConfigToggle"></i>
+</button>
+<div class="right-config-wrap" [ngClass]="{'right-config-wrap-on':isConfigToggle}">
+  <div class="config-header">
+    <h3 class="config-title">
+      <i class="fa fa-fighter-jet"></i>
+      <span>Accesos rápidos</span>
+    </h3>
+    <!-- <p class="desc">.</p> -->
+  </div>
+  <ul class="config-content">
+    <li class="config-list">
+      <div class="search-group">
+        <input type="text" class="search-input" placeholder="Buscar servicio · · ·" [(ngModel)]="askService" (keyup.enter)="searchService()">
+        <button class="search-btn" (click)="searchService()">
+          <i class="fa fa-search fa-fw"></i>
+        </button>
+      </div>
+    </li>
+    <li *ngIf="isLogged" class="config-list" [routerLink]="['/pages/index/edit-profile']">
+      
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="col-md-4 col-sm-2">
+              <img class="userAvatar" src="https://www.bemanistyle.com/wp-content/uploads/2018/01/Linux-Avatar-300px.png" 
+              alt="">
+            </div>
+            <div class="col-md-8 col-sm-10">
+              <b>
+                {{userInfo.name}} &nbsp; {{userInfo.lastname}}
+              </b>
+              <br>
+              <i class="text-small">
+                {{userType == userTypeEnum.Client ? 'Usuario' : 'Proveedor de servicios'}}
+              </i>
+            </div>
+          </div>
+        </div>
+    </li>
+    <li class="config-list" [routerLink]="['/pages/index/categories']" (click)="isConfigToggle = false">
+      <span><i class="fa fa-tags fa-fw"></i>Categorías</span>
+    </li>
+    <li *ngIf="isLogged" class="config-list" [routerLink]="['/pages/index/edit-profile']">
+      <span><i class="fa fa-user fa-fw log"></i>Editar perfil</span>
+    </li>
+    <li *ngIf="isLogged" class="config-list" (click)="logOut()">
+      <span><i class="fa fa-sign-out fa-fw log"></i>Cerrar sesión</span>
+    </li>
+    <li *ngIf="!isLogged" class="config-list" [routerLink]="['/login']">
+      <span><i class="fa fa-sign-in fa-fw log"></i>Iniciar Sesión</span>
+    </li>
+    <li *ngIf="!isLogged" class="config-list" [routerLink]="['/register']">
+      <span><i class="fa fa-external-link fa-fw log"></i>Registrarse</span>
+    </li>
+    <!-- <li class="config-list">
+      <span>Config1</span>
+      <switch switchName="config1" switchId="config1" multiple [checked]="true"></switch>
+    </li>
+    <li class="config-list">
+      <span>Config2</span>
+      <switch switchName="config2" switchId="config2" multiple></switch>
+    </li>
+    <li class="config-list">
+      <span>Config3</span>
+      <switch switchName="config3" switchId="config3" multiple></switch>
+    </li> -->
+  </ul>
+</div>

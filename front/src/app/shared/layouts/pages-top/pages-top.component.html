@@ -1,0 +1,53 @@
+<div class="pages-top">
+  <div class="avatar-wrap">
+    <div class="avatar">
+      <img src="{{avatarImgSrc}}" alt="avatar" style="cursor: pointer;" [routerLink]="['/']">
+    </div>
+    <!-- <div class="user-info-wrap">
+      <span class="user-name" title="{{userName}}" style="cursor: pointer;" [routerLink]="['/']">{{userName}}</span>
+      <span class="user-post" title="{{userPost}}" style="cursor: pointer;"[routerLink]="['/']">{{userPost}}</span>
+    </div> -->
+  </div>
+  <div class="search-group">
+    <input type="text" class="search-input" placeholder="Buscar servicio · · ·" [(ngModel)]="askService" (keyup.enter)="searchService()">
+    <button class="search-btn" (click)="searchService()">
+      <i class="fa fa-search fa-fw"></i>
+    </button>
+  </div>
+
+  <div class="arrow-wrap">
+    <img class="userAvatar" src="{{arrowImage}}" 
+        alt="">
+  </div>
+  
+  <div class="buttons-wrap">
+      <span style="cursor: pointer;" class="button-entrance" [routerLink]="['/pages/index/myservices']">
+        <i class="fa fa-book"></i>Mis servicios</span>
+    <span style="cursor: pointer;" class="button-entrance" [routerLink]="['/pages/index/categories']">
+      <i class="fa fa-tags fa-fw"></i>Categorías</span>
+    <span [routerLink]="['/pages/index/edit-profile']" *ngIf="isLoggedIn" style="cursor: pointer;" class="button-entrance toright" [routerLink]="['/login']">
+      <span class="press" *ngIf="userInfo !== null"> 
+        <img class="userAvatar" src="https://www.bemanistyle.com/wp-content/uploads/2018/01/Linux-Avatar-300px.png" 
+        alt="">
+        {{userInfo !== null ? userInfo.name : ''}}
+      </span></span>
+    <span *ngIf="!isLoggedIn" style="cursor: pointer;" class="button-entrance toright" [routerLink]="['/login']">
+      <span><i class="fa fa-sign-in fa-fw log"></i>Iniciar Sesión</span></span>
+    <span *ngIf="!isLoggedIn" style="cursor: pointer;" class="button-entrance toright"[routerLink]="['/register']"><span>
+      <i class="fa fa-external-link fa-fw log"></i>Registrarse</span></span>
+  </div>
+
+
+
+  <!-- <div class="msg-tips-wrap">
+    <div class="msg-entrance ring">
+      <span class="fa fa-bell fa-fw"></span>
+      <span class="badge" *ngIf="tip.ring"></span>
+    </div>
+    <div class="msg-entrance email">
+      <span class="fa fa-envelope fa-fw"></span>
+      <span class="badge" *ngIf="tip.email"></span>
+    </div>
+  </div> -->
+
+</div>
