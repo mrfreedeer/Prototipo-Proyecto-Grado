@@ -21,40 +21,45 @@ export class RegisterComponent implements OnInit {
   containsnumber = /\d/;
   themeCategories = []
   submitted: boolean = false;
+  registerForm: FormGroup;
 
-  registerForm = new FormGroup({
-    personalInfo: new FormGroup({
-      name: new FormControl('', [Validators.minLength(2), Validators.required]),
-      lastname: new FormControl('', [Validators.minLength(2), Validators.required]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      address: new FormControl('', [Validators.minLength(6), Validators.required]),
-      phone: new FormControl('', [Validators.required, Validators.min(10)]),
-      password: new FormControl('', [Validators.minLength(8), Validators.required, Validators.pattern(this.containsnumber)]),
-      confirmPassword: new FormControl('', []),
-    }, {validators: this.checkPasswords}),
-    businessInfo: new FormGroup({
-      businessname: new FormControl('', [Validators.minLength(2), Validators.required]),
-      businessdescription: new FormControl('', [Validators.required, Validators.minLength(20)]),
-      address: new FormControl('', [Validators.minLength(6), Validators.required]),
-      servicecategories: new FormControl('', [Validators.required])
-    })
-  });
+  
 
 
   constructor(
     private router: Router,
     private categories: CategoriesService,
     private users: UsersService
-  ) { }
+  ) {
+
+    
+   }
 
   ngOnInit() {
+    this.registerForm = new FormGroup({
+      personalInfo: new FormGroup({
+        name: new FormControl('', [Validators.minLength(2), Validators.required]),
+        lastname: new FormControl('', [Validators.minLength(2), Validators.required]),
+        email: new FormControl('', [Validators.email, Validators.required]),
+        address: new FormControl('', [Validators.minLength(6), Validators.required]),
+        phone: new FormControl('', [Validators.required, Validators.min(10)]),
+        password: new FormControl('', [Validators.minLength(8), Validators.required, Validators.pattern(this.containsnumber)]),
+        confirmPassword: new FormControl('', []),
+      }, {validators: this.checkPasswords}),
+      businessInfo: new FormGroup({
+        businessname: new FormControl('', [Validators.minLength(2), Validators.required]),
+        businessdescription: new FormControl('', [Validators.required, Validators.minLength(20)]),
+        address: new FormControl('', [Validators.minLength(6), Validators.required]),
+        servicecategories: new FormControl('', [Validators.required])
+      })
+    });
     this.getCategories();
   }
 
   checkPasswords(registerForm: FormGroup) { // here we have the 'passwords' group
     let password = registerForm.controls.password.value;
     let confirm = registerForm.controls.confirmPassword.value;
-
+  
     if (confirm.length <=0) return null;
     if(confirm !== password) return {doesMatchPassword: true};
     return null;

@@ -26,70 +26,70 @@
   
             <div class="row" formGroupName="personalInfo">
               <div class="col-md-6">
-                <div class="input-group" [ngClass]="{'has-error':registerForm.controls.personalInfo.controls.name.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error':registerForm.get('personalInfo').get('name').invalid && myform.submitted}">
                   <label>Nombre</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.personalInfo.controls.name.errors?.required">
+                  *ngIf="submitted && registerForm.get('personalInfo').get('name').errors?.required">
                   Por favor llene este campo</small>
                   <input formControlName="name" class="form-control with-primary-addon" type="text">
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="input-group" [ngClass]="{'has-error':registerForm.controls.personalInfo.controls.lastname.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error':registerForm.get('personalInfo').get('lastname').invalid && myform.submitted}">
                   <label>Apellido</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.personalInfo.controls.lastname.errors?.required">
+                  *ngIf="submitted && registerForm.get('personalInfo').get('lastname').errors?.required">
                   Por favor llene este campo</small>
                   <input formControlName="lastname" class="form-control with-primary-addon" type="text">
                 </div>
               </div>
               <div class="col-md-6" *ngIf="!userTypeSwitch">
-                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.address.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.get('personalInfo').get('address').invalid && myform.submitted}">
                   <label for="Direccion">Dirección</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.personalInfo.controls.address.errors?.required">
+                  *ngIf="submitted && registerForm.get('personalInfo').get('address').errors?.required">
                   Por favor llene este campo</small>
                   <input formControlName="address" class="form-control with-primary-addon" type="text">
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.phone.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.get('personalInfo').get('phone').invalid && myform.submitted}">
                   <label>Teléfono</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.personalInfo.controls.phone.errors?.required">
+                  *ngIf="submitted && registerForm.get('personalInfo').get('phone').errors?.required">
                   Por favor llene este campo</small>
                   <input formControlName="phone" class="form-control with-primary-addon" type="number">
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.email.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.get('personalInfo').get('email').invalid && myform.submitted}">
                   <label>Correo</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.personalInfo.controls.email.errors?.required">
+                  *ngIf="submitted && registerForm.get('personalInfo').get('email').errors?.required">
                   Por favor llene este campo</small>
                   <input formControlName="email" class="form-control with-primary-addon" type="text">
                 </div>
               </div>
               <div class="col-md-6">
-                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.password.invalid && myform.submitted}">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.get('personalInfo').get('password').invalid && myform.submitted}">
                     <label>Contraseña</label>
                     &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.personalInfo.controls.password.errors?.required">
+                  *ngIf="submitted && registerForm.get('personalInfo').get('password').errors?.required">
                   Por favor llene este campo</small>
                     <input formControlName="password" class="form-control with-primary-addon" type="password">
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.personalInfo.controls.invalid && myform.submitted}">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.get('personalInfo').get('invalid') && myform.submitted}">
                     <label>Repita la Contraseña</label>
                     &nbsp;
-                    <span style="color:red" *ngIf="registerForm.controls.personalInfo.errors?.doesMatchPassword">Las constraseñas no coinciden</span>
+                    <span style="color:red" *ngIf="registerForm.get('personalInfo').errors?.doesMatchPassword">Las constraseñas no coinciden</span>
                     <input formControlName="confirmPassword" class="form-control with-primary-addon" type="password">
                   </div>
                 </div>
@@ -105,21 +105,21 @@
             <div class="form-group"  formGroupName="businessInfo">
               <div class="row">
               <div class="col-md-6" >
-                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.businessname.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.get('businessInfo').get('businessname').invalid && myform.submitted}">
                   <label>Nombre del negocio</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.businessInfo.controls.businessname.errors?.required">
+                  *ngIf="submitted && registerForm.get('businessInfo').get('businessname').errors?.required">
                   Por favor llene este campo</small>
                   <input formControlName="businessname" class="form-control with-primary-addon" type="text">
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.businessdescription.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.get('businessInfo').get('businessdescription').invalid && myform.submitted}">
                   <label>Descripción del negocio</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.businessInfo.controls.businessdescription.errors?.required">
+                  *ngIf="submitted && registerForm.get('businessInfo').get('businessdescription').errors?.required">
                   Por favor llene este campo</small>
                   <textarea formControlName="businessdescription" class="form-control with-primary-addon">
                       Describe brevemente lo que hace tu negocio
@@ -127,11 +127,11 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.address.invalid && myform.submitted}">
+                <div class="input-group" [ngClass]="{'has-error': registerForm.get('businessInfo').get('address').invalid && myform.submitted}">
                   <label for="Direccion">Dirección del negocio</label>
                   &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.businessInfo.controls.address.errors?.required">
+                  *ngIf="submitted && registerForm.get('businessInfo').get('address').errors?.required">
                   Por favor llene este campo</small>
                   <input formControlName="address" class="form-control with-primary-addon" type="text">
                 </div>
@@ -140,21 +140,21 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="col-md-6">
-                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.servicecategories.invalid && myform.submitted}">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.get('businessInfo').get('servicecategories').invalid && myform.submitted}">
                     <label>Categorias del servicio</label>
                     &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.businessInfo.controls.servicecategories.errors?.required">
+                  *ngIf="submitted && registerForm.get('businessInfo').get('servicecategories').errors?.required">
                   Por favor llene este campo</small>
                     <dx-tag-box placeholder="Seleccionar..." formControlName="servicecategories" [dataSource]="themeCategories" ></dx-tag-box>
                   </div>
                 </div>
                 <!-- <div class="col-md-6">
-                  <div class="input-group" [ngClass]="{'has-error': registerForm.controls.businessInfo.controls.offeredservices.invalid && myform.submitted}">
+                  <div class="input-group" [ngClass]="{'has-error': registerForm.get('businessInfo').get('offeredservices').invalid && myform.submitted}">
                     <label>Servicios a ofrecer</label>
                     &nbsp;
                   <small class="text-danger" 
-                  *ngIf="submitted && registerForm.controls.businessInfo.controls.offeredservices.errors?.required">
+                  *ngIf="submitted && registerForm.get('businessInfo').get('offeredservices').errors?.required">
                   Por favor llene este campo</small>
                     <dx-tag-box formControlName="offeredservices" [acceptCustomValue]=true></dx-tag-box>
                   </div>
