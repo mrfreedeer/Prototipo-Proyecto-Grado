@@ -16,7 +16,7 @@
       <div class="col-md-6" *ngFor="let r of results">
         <card
           class="col-md-12" 
-          [cardTitle]="r.name" 
+          [cardTitle]="r.businessname" 
           [cardSubtitle]="r.services"
           [isCollapse]=true>
           <div class="row">
@@ -38,9 +38,21 @@
                 </div>
               </div>
           </div>
+          <div class="row">
+            <div class="col-md-4 pull-right">
+              <button type="button" class="btn btn-info" disabled>
+                Contratar
+                </button>
+
+            </div>
+
+          </div>
+  
         </card>
         &nbsp;
         &nbsp;
+        
+
       </div>
     </div>
     <div class="row">

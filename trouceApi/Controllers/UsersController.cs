@@ -125,7 +125,9 @@ namespace TodoApi.Controllers
         }
         [HttpGet("search")]
         public async Task<ActionResult<Users>> SearchService(string searchFilter)
-        {
+        {   
+
+            
             var result = Json( new {
                 success = false
             });
@@ -137,6 +139,7 @@ namespace TodoApi.Controllers
                 }; 
                 using (var business = new SearchBusiness(_context)) {             
                     var searchResults = business.search(filter);
+                    
                     return Json(new {
                             data = searchResults,
                             success = true
@@ -150,7 +153,10 @@ namespace TodoApi.Controllers
 
         [HttpGet("searchCategory")]
         public async Task<ActionResult<Users>> SearchServiceByCategory(string service)
-        {  
+        {   
+            System.Diagnostics.Debug.Write("CATEGORY SEAAAARCH");
+
+            System.Diagnostics.Debug.Write(service);
             var query = await _context.Users
                 .Where(t => t.Categories.Trim().Contains(service))
                 .ToListAsync();

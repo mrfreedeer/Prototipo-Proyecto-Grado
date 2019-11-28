@@ -1,0 +1,14 @@
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/bin/Debug/netcoreapp2.2/trouceApi.deps.json
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/bin/Debug/netcoreapp2.2/trouceApi.runtimeconfig.json
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/bin/Debug/netcoreapp2.2/trouceApi.runtimeconfig.dev.json
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/bin/Debug/netcoreapp2.2/trouceApi.dll
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/bin/Debug/netcoreapp2.2/trouceApi.pdb
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.csprojAssemblyReference.cache
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.csproj.CoreCompileInputs.cache
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.RazorAssemblyInfo.cache
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.RazorAssemblyInfo.cs
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.AssemblyInfoInputs.cache
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.AssemblyInfo.cs
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.RazorTargetAssemblyInfo.cache
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.dll
+/home/mrfreedeer/Desktop/Prototipo-Proyecto-Grado/trouceApi/obj/Debug/netcoreapp2.2/trouceApi.pdb

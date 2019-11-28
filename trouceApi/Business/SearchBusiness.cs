@@ -25,18 +25,20 @@ namespace trouceApi.Business
         {
             _context = context;
         }
-        public List<Services> search( SearchFilter filter )
+        public List<Users> search( SearchFilter filter )
         {
-            var query = from items in _context.Services select items;
+            var query = from items in _context.Users select items;
 
             if (filter.SearchString != null && filter.SearchString != "") {
-                query = query.Where(x => x.Name.Trim().Contains(filter.SearchString));
+                query = query.Where(x => x.Name.Trim().Contains(filter.SearchString) || x.Categories.Trim().Contains(filter.SearchString));
             }
 
             if (filter.Category != null && filter.Category != "") {
                 query = query.Where(x => x.Categories.Trim().Contains(filter.Category));
             }
 
+            System.Diagnostics.Debug.Write(query.ToList());
+            
             return query.ToList();
         }
     }
