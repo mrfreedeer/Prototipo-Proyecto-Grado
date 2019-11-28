@@ -9,7 +9,7 @@ drop table if exists Services;
 
 create table Users (id INT AUTO_INCREMENT PRIMARY KEY, usertype INT, name varchar(30), lastname varchar(30), phone varchar(20), 
     businessname tinytext, businessdescription tinytext, address tinytext, categories mediumtext,
-    email varchar(60), password varchar(40));
+    email varchar(60), password varchar(40), src longtext);
 create table Categories (id INT AUTO_INCREMENT PRIMARY KEY, name varchar(30), description mediumtext);
 create table Services (id INT AUTO_INCREMENT PRIMARY KEY, userid INT, name varchar(30), description mediumtext, price INT, categories mediumtext, notes tinytext);
 
@@ -27,15 +27,15 @@ insert into Users(usertype, name, lastname, phone, businessname, businessdescrip
              "Evergreen Av. 23rd street, apt 302", "Educación, Música, Arte", "ent@cleastwood", "theoldwest7"); 
 	
 insert into Users(usertype, name, lastname, phone, businessname, businessdescription, address, email, password) 
-    values (0, "Shaniqua", "Johnson", "8855555", "Breaking good", "Aprende matemática con la mejor profesora, la mejor educación. Pitágoras estará orgulloso",
-             "Remolque en el parque de la 14", "Educación", "white@walter", "notamethlab98"); 
+    values (0, "Henry", "Perez", "313456565", "Henry Perez", "Aprende matemáticas a través de clases de matemáticas dinámicas realizadas para que el estudiante aprenda de verdad. Doy clases desde todos los niveles hasta que hayas entendido bien el tema",
+             "Cra 7 #21446", "Educación", "henryp@gmail.com", "henryp123"); 
 
 insert into Users(usertype, name, lastname, phone, businessname, businessdescription, address, categories, email, password)
-    values (0, "Ketchum", "Al", "9999999", "Artifícame esta", "Aprende a realizar las más hermosas piezas de arte que te puedas imaginar, y quizás llevate una de las mías si te gustan",
-             "Cra 3 #12-47","Arte, Educación", "newvan@gogh", "mejorquevangogh2001"); 
+    values (0, "Vanessa", "Hernandez", "3144229030", "Artes prácticas", "Te enseño a realizar dibujos y pinturas desde la eleccion del canvas hasta las técnicas de pintura. Se usan oleos y acuarelas. Trabajo principalmente con retratos de aves.",
+             "Jardines de Milan Casa 15 Dosquebradas","Arte, Educación", "hnandez@gmail.com", "hnandez123"); 
 
 insert into Users(usertype, name, lastname, phone, businessname, businessdescription, address, categories, email, password) 
-    values (0, "Jorge", "Cremtáza", "54554545", "Mundos perpetuos", "Exploremos los vastos mundos que podemos crear con la escritura, para cuentas, novelas, y escribe relatos inspiradores para la literatura",
+    values (0, "	", "Cremtáza", "54554545", "Mundos perpetuos", "Exploremos los vastos mundos que podemos crear con la escritura, para cuentas, novelas, y escribe relatos inspiradores para la literatura",
             "Parque de la escritura", "Literatura, Educación, Arte", "oli@veira", "lospremios1987");
 
 
